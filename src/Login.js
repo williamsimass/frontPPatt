@@ -15,7 +15,7 @@ const Login = () => {
       const { username, password } = values;
 
       // Verificação simples de login (substitua por lógica real)
-      if (username === 'admin' && password === 'admin123') {
+      if (username === 'admin' && password === 'admin') {
         message.success('Login bem-sucedido!');
         navigate('/home'); // Redireciona para a página principal
       } else {
