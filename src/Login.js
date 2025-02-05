@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, message } from 'antd';
+import logo from './assets/logo.jpg'; // Certifique-se de que o caminho está correto
 import './Login.css'; // Arquivo CSS para estilos personalizados
 
 const Login = () => {
@@ -29,9 +30,13 @@ const Login = () => {
       <div className="login-overlay">
         <div className="login-box">
           <img
-            src="./logo.jpg" // Substitua pelo caminho do logo
+            src={logo} // Use a variável da logo
             alt="Logo do Escritório"
             className="logo"
+            onError={(e) => {
+              console.error('Erro ao carregar a logo:', e); // Verifique erros no console
+              e.target.style.display = 'none'; // Oculta a imagem se não carregar
+            }}
           />
           <h2 className="welcome-message">Bem-vindo ao Núcleo de Inteligência Tecnológica</h2>
           <Form name="login" onFinish={onFinish} layout="vertical">

@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('./fundo.jpg'); /* Substitua pelo caminho da imagem */
+    background-image: url('./fundo.jpg'); /* Caminho da imagem na pasta public */
     background-size: cover;
     background-position: center;
   }
@@ -18,7 +18,7 @@
   }
   
   .login-box {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8); /* Fundo branco com 80% de opacidade */
     padding: 24px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
