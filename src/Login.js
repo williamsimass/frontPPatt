@@ -29,7 +29,7 @@ const Login = () => {
       <div className="login-overlay">
         <div className="login-box">
           <img
-            src="/caminho/para/logo.png" // Substitua pelo caminho do logo
+            src="./logo.jpg" // Substitua pelo caminho do logo
             alt="Logo do Escritório"
             className="logo"
           />
