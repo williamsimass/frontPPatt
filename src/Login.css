@@ -1,0 +1,38 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/caminho/para/imagem-de-fundo.jpg'); /* Substitua pelo caminho da imagem */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .login-overlay {
+    background: rgba(0, 0, 0, 0.6); /* Overlay escuro para melhorar a legibilidade */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-box {
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 100px;
+    margin-bottom: 16px;
+  }
+  
+  .welcome-message {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
