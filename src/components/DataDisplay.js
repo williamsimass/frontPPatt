@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, Pagination, Spin, Input, Modal, Checkbox, Row, Col, message } from 'antd';
 import * as XLSX from 'xlsx';
-import FiltroAvancadoButton from './buttons/FiltroAvancadoButton'; // Verifique o caminho aqui
+import FiltroAvancadoButton from './buttons/FiltroAvancadoButton';
 import GerarRelatorioButton from './buttons/GerarRelatorioButton';
 import UploadButton from './buttons/UploadButton';
 
@@ -35,6 +35,12 @@ const DataDisplay = () => {
 
     fetchData();
   }, []);
+
+  // Função para verificar se um valor é repetido em uma coluna
+  const isValueRepeated = (columnKey, value) => {
+    const count = filteredData.filter(item => item[columnKey] === value).length;
+    return count > 1; // Retorna true se o valor aparecer mais de uma vez
+  };
 
   const handleFilterChange = (e) => {
     const value = e.target.value;
@@ -89,7 +95,7 @@ const DataDisplay = () => {
     { label: 'OBSERVAÇÕES', value: 'observacoes' },
     { label: 'ADVOGADO_PARTE', value: 'advogado_parte' },
     { label: 'ANÁLISE', value: 'analise' },
-];
+  ];
 
   const handleApplyFilters = () => {
     const filteredColumns = columnsOptions.filter(col =>
@@ -98,7 +104,14 @@ const DataDisplay = () => {
       title: col.label,
       dataIndex: col.value,
       key: col.value,
-      render: text => text === 'NaN' ? 'Não disponível' : text, // Para "NaN"
+      render: (text, record) => {
+        const isRepeated = isValueRepeated(col.value, text);
+        return (
+          <span style={{ color: isRepeated ? 'red' : 'inherit' }}>
+            {text === 'NaN' ? 'Não disponível' : text}
+          </span>
+        );
+      },
     }));
 
     setFilteredColumns(filteredColumns); // Atualiza as colunas filtradas
@@ -109,7 +122,14 @@ const DataDisplay = () => {
     title: col.label,
     dataIndex: col.value,
     key: col.value,
-    render: text => text === 'NaN' ? 'Não disponível' : text, // Tratamento para "NaN"
+    render: (text, record) => {
+      const isRepeated = isValueRepeated(col.value, text);
+      return (
+        <span style={{ color: isRepeated ? 'red' : 'inherit' }}>
+          {text === 'NaN' ? 'Não disponível' : text}
+        </span>
+      );
+    },
   }));
 
   const handleGenerateReport = () => {
