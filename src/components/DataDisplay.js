@@ -36,8 +36,10 @@ const DataDisplay = () => {
     fetchData();
   }, []);
 
-  // Função para verificar se um valor é repetido em uma coluna
+  // Função para verificar se um valor é repetido em uma coluna (exceto "Não disponível" e "não" na coluna "Análise")
   const isValueRepeated = (columnKey, value) => {
+    if (value === 'Não disponível' || value === 'NaN') return false; // Ignora "Não disponível" e "NaN"
+    if (columnKey === 'analise' && value.toLowerCase() === 'não') return false; // Ignora "não" na coluna "Análise"
     const count = filteredData.filter(item => item[columnKey] === value).length;
     return count > 1; // Retorna true se o valor aparecer mais de uma vez
   };
