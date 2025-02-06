@@ -36,10 +36,9 @@ const DataDisplay = () => {
     fetchData();
   }, []);
 
-  // Função para verificar se um valor é repetido em uma coluna (exceto "Não disponível" e "não" na coluna "Análise")
+  // Função para verificar se um valor é repetido em uma coluna (exceto "Não disponível")
   const isValueRepeated = (columnKey, value) => {
     if (value === 'Não disponível' || value === 'NaN') return false; // Ignora "Não disponível" e "NaN"
-    if (columnKey === 'analise' && value.toLowerCase() === 'não') return false; // Ignora "não" na coluna "Análise"
     const count = filteredData.filter(item => item[columnKey] === value).length;
     return count > 1; // Retorna true se o valor aparecer mais de uma vez
   };
@@ -107,6 +106,11 @@ const DataDisplay = () => {
       dataIndex: col.value,
       key: col.value,
       render: (text, record) => {
+        // Se for a coluna "Análise", nunca destaca em vermelho
+        if (col.value === 'analise') {
+          return <span>{text === 'NaN' ? 'Não disponível' : text}</span>;
+        }
+        // Para outras colunas, destaca valores repetidos
         const isRepeated = isValueRepeated(col.value, text);
         return (
           <span style={{ color: isRepeated ? 'red' : 'inherit' }}>
@@ -125,6 +129,11 @@ const DataDisplay = () => {
     dataIndex: col.value,
     key: col.value,
     render: (text, record) => {
+      // Se for a coluna "Análise", nunca destaca em vermelho
+      if (col.value === 'analise') {
+        return <span>{text === 'NaN' ? 'Não disponível' : text}</span>;
+      }
+      // Para outras colunas, destaca valores repetidos
       const isRepeated = isValueRepeated(col.value, text);
       return (
         <span style={{ color: isRepeated ? 'red' : 'inherit' }}>
