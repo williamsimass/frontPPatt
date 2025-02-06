@@ -1,17 +1,25 @@
 import React from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
-import Login from './Login'; // Login component
-import Home from './pages/Home'; // Main home page component
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Layout } from 'antd';
+import SidebarComponent from './components/SidebarComponent';
+import HeaderComponent from './components/HeaderComponent';
+import AppRoutes from './routes'; // Importando o arquivo de rotas
+
+const { Content } = Layout;
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/login" />} /> {/* Redirects to login */}
-      <Route path="/login" element={<Login />} /> {/* Login page */}
-      <Route path="/home" element={<Home />} /> {/* Main page */}
-      {/* Consider renaming or removing /full route if not used */}
-      <Route path="/full" element={<Home />} /> {/* Possibly redundant */}
-    </Routes>
+    <Router>
+      <Layout style={{ minHeight: '100vh' }}>
+        <SidebarComponent />
+        <Layout>
+          <HeaderComponent />
+          <Content style={{ padding: '24px' }}>
+            <AppRoutes /> {/* Rotas da aplicação */}
+          </Content>
+        </Layout>
+      </Layout>
+    </Router>
   );
 };
 
