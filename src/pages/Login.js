@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Input, Button, message } from 'antd';
-import logo from '../assets/logo.png'; // Certifique-se de que o caminho está correto
+import logo from '../assets/fundo.png'; // Certifique-se de que o caminho está correto
 import '../Login.css'; // Arquivo CSS para estilos personalizados
 
 const Login = () => {
