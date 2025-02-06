@@ -1,29 +1,27 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
-import { DatabaseOutlined, FileTextOutlined, TeamOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
+import { Menu } from 'antd';
+import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
 
 const { Sider } = Layout;
 
-const SidebarComponent = () => {
-  const navigate = useNavigate(); // Hook para navegação
-
+const SidebarComponent = ({ onMenuClick }) => {
   return (
     <Sider width={250} style={{ background: 'white', padding: '16px' }}>
-      <Menu
-        mode="inline"
-        defaultSelectedKeys={['dados']}
+      <Menu 
+        mode="inline" 
+        defaultSelectedKeys={['sub1']} 
         style={{ height: '100%', borderRight: 0, marginTop: '16px' }}
-        onClick={(e) => navigate(e.key)}
+        onClick={(e) => onMenuClick(e.key)}
       >
-        <Menu.Item key="/" icon={<DatabaseOutlined />}>
-          Dados do Banco de Dados
+        <Menu.Item key="sub1" icon={<UserOutlined />} disabled>
+          Autores
         </Menu.Item>
-        <Menu.Item key="/historico" icon={<FileTextOutlined />}>
-          Histórico de Relatórios
+        <Menu.Item key="sub2" icon={<LaptopOutlined />} disabled>
+          Processos
         </Menu.Item>
-        <Menu.Item key="/clientes" icon={<TeamOutlined />}>
-          Separação por Cliente
+        <Menu.Item key="sub3" icon={<NotificationOutlined />} disabled>
+          Detalhes
         </Menu.Item>
       </Menu>
     </Sider>
