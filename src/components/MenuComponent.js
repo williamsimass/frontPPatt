@@ -13,7 +13,7 @@ const MenuComponent = () => (
             <Link to="/home">Consulta Básica</Link>
         </Menu.Item>
         <Menu.Item key="2">
-            <Link to="/full">Consulta Geral</Link>
+            <Link to="/full">disable</Link>
         </Menu.Item>
     </Menu>
 );
