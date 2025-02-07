@@ -9,13 +9,22 @@ const SidebarComponent = ({ onMenuClick }) => {
 
   return (
     <Sider 
-      width={250} 
-      collapsible 
-      collapsed={collapsed} 
-      onCollapse={setCollapsed}
-      style={{ background: '#fff', padding: '16px', borderRight: '1px solid #ddd' }}
+     width={250} 
+     collapsible 
+     collapsed={collapsed} 
+     onCollapse={setCollapsed}
+     trigger={null} // Remover a seta da parte inferior
+     style={{ background: '#fff', padding: '16px', borderRight: '1px solid #ddd' }}
     >
+
       {/* Ícone de collapse superior */}
+      <div 
+        style={{ textAlign: 'center', marginBottom: '16px', cursor: 'pointer' }} 
+        onClick={() => setCollapsed(!collapsed)}
+      >
+        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+      </div>
+
       <Menu 
         mode="inline" 
         defaultSelectedKeys={['dados']} 
