@@ -16,13 +16,6 @@ const SidebarComponent = ({ onMenuClick }) => {
       style={{ background: '#fff', padding: '16px', borderRight: '1px solid #ddd' }}
     >
       {/* Ícone de collapse superior */}
-      <div 
-        style={{ textAlign: 'center', marginBottom: '16px', cursor: 'pointer' }} 
-        onClick={() => setCollapsed(!collapsed)}
-      >
-        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </div>
-
       <Menu 
         mode="inline" 
         defaultSelectedKeys={['dados']} 
