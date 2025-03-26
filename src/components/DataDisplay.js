@@ -68,6 +68,7 @@ const DataDisplay = () => {
     { label: 'Nº de Integração', value: 'numero_integracao' },
     { label: 'Nº DO PROCESSO', value: 'processo_judicial' },
     { label: 'AUTOR', value: 'autor' },
+    { label: 'RÉU', value: 'reu' },
     { label: 'AUTOR FALECIDO', value: 'autor_falecido' },
     { label: 'ANO DO ÓBITO', value: 'ano_do_obito' },
     { label: 'TIPO DE PROCURAÇÃO?', value: 'tipo_de_procuracao' },
